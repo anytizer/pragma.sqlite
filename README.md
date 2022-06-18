@@ -1,2 +1,2 @@
-# sqlite.pragma
+# pragma.sqlite
 SQLite table structure viewer
