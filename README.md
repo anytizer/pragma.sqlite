@@ -13,3 +13,11 @@ SQLite table structure viewer
 * File > Open > Choose a .db file to proceed.
 
 ![screenshot](screenshot.png)
+
+## Libraries used:
+
+* Microsoft.Data.Sqlite
+* SQLitePCLRaw
+  * batteries_v2
+  * core
+  * provider.sqlite3
