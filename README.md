@@ -1,16 +1,18 @@
 # pragma.sqlite
 
-SQLite table structure viewer
+Table structure viewer for SQLite
 
-* Connects to the ueer selected .db file.
+* Connects to the user-selected .db file.
 * Looks up for list of tables.
 * Fetches table structures when you choose a table.
 
 ## How to?
 
 * Clone the repo.
-* Compile pragma.sqlite.sln file using C#/Visual Studio.
+* Restore nuget packages using C#/Visual Studio.
+* Compile pragma.sqlite.sln file, and run it.
 * File > Open > Choose a .db file to proceed.
+* Choose different tables to load the structure.
 
 ![screenshot](screenshot.png)
 
