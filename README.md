@@ -11,3 +11,5 @@ SQLite table structure viewer
 * Clone the repo.
 * Compile pragma.sqlite.sln file using C#/Visual Studio.
 * File > Open > Choose a .db file to proceed.
+
+![screenshot](screenshot.png)
