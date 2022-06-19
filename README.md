@@ -16,11 +16,13 @@ Table structure viewer for SQLite
 * File > Open > Choose a .db sqlite file to proceed.
 * Choose different tables to load the structure.
 
-![screenshot](resources/screenshot.png)
-
-It is a generic experimental product.
-
-## Libraries used:
-
+## Dependencies
+* [dotnet 7](https://dotnet.microsoft.com/en-us/download/dotnet)
 * [Microsoft.Data.Sqlite]()
 * [SQLitePCLRaw]()
+
+![screenshot](resources/screenshot.png)
+
+It is a generic experimental product that shows:
+* Connecting to SQLite Database.
+* PRAGMA queries
