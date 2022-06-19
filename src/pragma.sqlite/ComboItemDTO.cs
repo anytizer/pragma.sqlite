@@ -1,4 +1,4 @@
-﻿namespace pragma
+﻿namespace pragma.sqlite
 {
     class ComboItemDTO
     {

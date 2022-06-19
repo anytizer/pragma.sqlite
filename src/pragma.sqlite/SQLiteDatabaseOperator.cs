@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Data;
 
-namespace pragma
+namespace pragma.sqlite
 {
     // https://docs.microsoft.com/en-us/dotnet/standard/data/sqlite/transactions
     public class SQLiteDatabaseOperator : SQLiteDatabaseConnection
     {
         internal SqliteDataReader ParameterizedQuery(string sql, List<KVDTO> parameters)
         {
-            SqliteCommand command = this.Command();
+            SqliteCommand command = Command();
             command.CommandType = CommandType.Text;
             command.CommandText = sql;
 
@@ -25,7 +25,7 @@ namespace pragma
 
         public List<string[]> Query(string sql, List<KVDTO> parameters)
         {
-            SqliteDataReader reader = this.ParameterizedQuery(sql, parameters);
+            SqliteDataReader reader = ParameterizedQuery(sql, parameters);
 
             List<string[]> output = new List<string[]>() { };
             while (reader.Read())
@@ -49,13 +49,13 @@ namespace pragma
 
         public void RawQuery(string sql, List<KVDTO> parameters)
         {
-            this.ParameterizedQuery(sql, parameters);
+            ParameterizedQuery(sql, parameters);
         }
 
         public List<string[]> Query(string sql)
         {
             List<KVDTO> parameters = new List<KVDTO>() { };
-            List<string[]> output = this.Query(sql, parameters);
+            List<string[]> output = Query(sql, parameters);
             return output;
         }
     }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Data.Sqlite;
 using System.Data;
 
-namespace pragma
+namespace pragma.sqlite
 {
     public class SQLiteDatabaseConnection
     {
@@ -15,22 +15,22 @@ namespace pragma
         }
 
         public void ConnectTo(string datafile)
-        { 
+        {
             SqliteConnectionStringBuilder csb = new SqliteConnectionStringBuilder();
             csb.DataSource = datafile;
             csb.ForeignKeys = true;
             csb.Password = "";
 
-            this.connection = new SqliteConnection(csb.ConnectionString);
+            connection = new SqliteConnection(csb.ConnectionString);
 
-            this.InstallProvidersOnConnection(this.connection);
+            InstallProvidersOnConnection(connection);
 
-            this.connection.Open();
+            connection.Open();
         }
 
         public SqliteCommand Command()
         {
-            SqliteCommand command = this.connection.CreateCommand();
+            SqliteCommand command = connection.CreateCommand();
             command.CommandType = CommandType.Text;
 
             return command;
@@ -39,14 +39,16 @@ namespace pragma
         private void InstallProvidersOnConnection(SqliteConnection connection)
         {
             // https://docs.microsoft.com/en-us/dotnet/standard/data/sqlite/user-defined-functions
-            connection.CreateFunction("GUID", () => {
+            connection.CreateFunction("GUID", () =>
+            {
                 Providers p = new Providers();
 
                 string guid = p.id();
                 return guid;
             });
 
-            connection.CreateFunction("NOW", () => {
+            connection.CreateFunction("NOW", () =>
+            {
                 Providers p = new Providers();
 
                 string now = p.now();

@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace pragma
+namespace pragma.sqlite
 {
     static class Program
     {

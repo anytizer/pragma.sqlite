@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace pragma
+namespace pragma.sqlite
 {
-    class Pragma: SQLiteDatabaseOperator
+    class Pragma : SQLiteDatabaseOperator
     {
         public Pragma()
         {
@@ -16,8 +16,8 @@ namespace pragma
             List<ComboItemDTO> tables = new List<ComboItemDTO>();
 
             string sql = "SELECT tbl_name FROM sqlite_master WHERE type=\"table\";";
-            List<string[]> tables1 = this.Query(sql);
-            foreach(string[] table in tables1)
+            List<string[]> tables1 = Query(sql);
+            foreach (string[] table in tables1)
             {
                 tables.Add(new ComboItemDTO() { Name = table[0], Value = table[0] });
             }
@@ -30,7 +30,7 @@ namespace pragma
             List<KVDTO> parameters = new List<KVDTO>();
             parameters.Add(new KVDTO() { k = "tablename", v = tablename });
 
-            List<string[]> output = this.Query("SELECT sql FROM sqlite_master WHERE name=@tablename;", parameters);
+            List<string[]> output = Query("SELECT sql FROM sqlite_master WHERE name=@tablename;", parameters);
 
             return string.Join("\r\n", output[0][0].Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries));
         }
@@ -45,7 +45,7 @@ namespace pragma
             List<KVDTO> parameters = new List<KVDTO>();
             parameters.Add(new KVDTO() { k = "tablename", v = tablename });
 
-            string sql = "PRAGMA TABLE_INFO(@tablename);";
+            //string sql = "PRAGMA TABLE_INFO(@tablename);";
             // List<string[]> output = this.Query(sql, parameters);
 
             return string.Format("INSERT INTO `{0}` () VALUES ();", tablename);

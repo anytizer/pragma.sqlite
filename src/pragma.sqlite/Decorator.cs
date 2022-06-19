@@ -1,8 +1,7 @@
-﻿using pragma.sqlite;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace pragma
+namespace pragma.sqlite
 {
     class Decorator
     {

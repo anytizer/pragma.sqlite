@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace pragma
+namespace pragma.sqlite
 {
     public class Providers
     {
