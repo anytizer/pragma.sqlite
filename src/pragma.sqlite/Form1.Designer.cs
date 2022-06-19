@@ -1,5 +1,5 @@
 ﻿
-namespace pragma
+namespace pragma.sqlite
 {
     partial class Form1
     {

@@ -10,14 +10,17 @@ Table structure viewer for SQLite
 ## How to?
 
 * Clone the repo.
+* Open src/pragma.sqlite.sln
 * Restore nuget packages using C#/Visual Studio.
-* Compile pragma.sqlite.sln solution file, and run it.
+* Compile it, and run.
 * File > Open > Choose a .db sqlite file to proceed.
 * Choose different tables to load the structure.
 
 ![screenshot](resources/screenshot.png)
 
+It is a generic experimental product.
+
 ## Libraries used:
 
-* Microsoft.Data.Sqlite
-* SQLitePCLRaw
+* [Microsoft.Data.Sqlite]()
+* [SQLitePCLRaw]()
