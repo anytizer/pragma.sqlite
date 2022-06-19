@@ -9,7 +9,9 @@ namespace pragma
 
         public SQLiteDatabaseConnection()
         {
+            connection = new SqliteConnection(); // IDE Silencer only
 
+            // this.ConnectTo("database.db");
         }
 
         public void ConnectTo(string datafile)

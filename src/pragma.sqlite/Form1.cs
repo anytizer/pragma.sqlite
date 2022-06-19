@@ -13,26 +13,30 @@ namespace pragma
     public partial class Form1 : Form
     {
         public string database = "database.db";
-        pragma p = new pragma();
+        Pragma p = new Pragma();
 
         public Form1()
         {
             InitializeComponent();
 
-            decorator d = new decorator();
-            d.decorate(this);
-            d.decorate(this.menuStrip1);
-
             p.ConnectTo(database);
+        }
+
+        private void Decorate()
+        {
+            Decorator d = new Decorator();
+            d.Decorate(this);
+            d.Decorate(this.comboBox1);
+            d.Decorate(this.menuStrip1);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            reload();
+            this.Decorate();
+            this.Reload();
         }
 
-        public void reload()
+        private void Reload()
         {
             List<ComboItemDTO> tables = p.get_tables();
 
@@ -43,12 +47,25 @@ namespace pragma
             this.comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
+        private string selected_value()
+        {
+            //ComboBox c = (ComboBox)comboBox1 as ComboBox;
+            //string tablename = ((ComboItemDTO)c.Items[c.SelectedIndex]).Value;
+            string tablename = "unknown";
+            
+            if(comboBox1.Items.Count>0)
+            {
+                tablename = ((ComboItemDTO)comboBox1.Items[comboBox1.SelectedIndex]).Value;
+            }
+
+            return tablename;
+        }
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ComboBox c = sender as ComboBox;
-            string tablename = ((ComboItemDTO)c.Items[c.SelectedIndex]).Value;
+            string tablename = this.selected_value();
 
-            string info = p.get_info(tablename);
+            string info = p.create(tablename);
 
             this.textBox1.Text = info;
         }
@@ -58,7 +75,7 @@ namespace pragma
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = ".\\";
-                openFileDialog.Filter = "SQLite Database Files|*.db";
+                openFileDialog.Filter = "SQLite Database Files|*.db;*.sqlite";
                 openFileDialog.FilterIndex = 2;
                 openFileDialog.RestoreDirectory = true;
 
@@ -73,7 +90,7 @@ namespace pragma
         private void LoadDB(string filePath)
         {
             p.ConnectTo(filePath);
-            this.reload();
+            this.Reload();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -85,6 +102,42 @@ namespace pragma
         {
             string version = p.version();
             MessageBox.Show(version);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string tablename = this.selected_value();
+            textBox1.Text = p.insert(tablename);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string tablename = this.selected_value();
+            textBox1.Text = p.delete(tablename);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string tablename = this.selected_value();
+            textBox1.Text = p.flag(tablename);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string tablename = this.selected_value();
+            textBox1.Text = p.update(tablename);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string tablename = this.selected_value();
+            textBox1.Text = p.purge(tablename);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            string tablename = this.selected_value();
+            textBox1.Text = p.create(tablename);
         }
     }
 }
