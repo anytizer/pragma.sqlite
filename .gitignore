@@ -2,3 +2,4 @@
 /src/pragma.sqlite/bin
 /src/pragma.sqlite/obj
 /src/pragma.sqlite/*.user
+/bin

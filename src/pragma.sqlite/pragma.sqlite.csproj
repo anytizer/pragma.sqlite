@@ -13,6 +13,7 @@
     <Title>Table Viewer for SQLite</Title>
     <PlatformTarget>x64</PlatformTarget>
     <Nullable>enable</Nullable>
+    <PackageIcon>tick.png</PackageIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -27,7 +28,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="viewer.ico" />
+    <None Include="..\..\resources\tick.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
