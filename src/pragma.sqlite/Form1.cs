@@ -21,6 +21,7 @@ namespace pragma
 
             decorator d = new decorator();
             d.decorate(this);
+            d.decorate(this.menuStrip1);
 
             p.ConnectTo(database);
         }
@@ -78,6 +79,12 @@ namespace pragma
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void versionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string version = p.version();
+            MessageBox.Show(version);
         }
     }
 }

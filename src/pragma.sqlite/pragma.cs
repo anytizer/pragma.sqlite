@@ -29,5 +29,10 @@ namespace pragma
 
             return string.Join("\r\n", output[0][0].Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries));
         }
+
+        internal string version()
+        {
+            return "V0.0.1";
+        }
     }
 }
