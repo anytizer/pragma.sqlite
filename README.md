@@ -14,7 +14,7 @@ Table structure viewer for SQLite
 * File > Open > Choose a .db file to proceed.
 * Choose different tables to load the structure.
 
-![screenshot](screenshot.png)
+![screenshot](resources/screenshot.png)
 
 ## Libraries used:
 
