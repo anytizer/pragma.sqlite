@@ -63,12 +63,12 @@ namespace pragma.sqlite
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 71);
+            this.textBox1.Location = new System.Drawing.Point(10, 68);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.PlaceholderText = "CREATE TABLE ...";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(497, 295);
+            this.textBox1.Size = new System.Drawing.Size(497, 252);
             this.textBox1.TabIndex = 1;
             // 
             // label1
@@ -132,7 +132,7 @@ namespace pragma.sqlite
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(95, 372);
+            this.button1.Location = new System.Drawing.Point(91, 326);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(90, 30);
             this.button1.TabIndex = 4;
@@ -142,7 +142,7 @@ namespace pragma.sqlite
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(191, 372);
+            this.button2.Location = new System.Drawing.Point(187, 326);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 30);
             this.button2.TabIndex = 5;
@@ -152,7 +152,7 @@ namespace pragma.sqlite
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(272, 372);
+            this.button3.Location = new System.Drawing.Point(268, 326);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 30);
             this.button3.TabIndex = 6;
@@ -162,7 +162,7 @@ namespace pragma.sqlite
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(353, 372);
+            this.button4.Location = new System.Drawing.Point(349, 326);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 30);
             this.button4.TabIndex = 7;
@@ -172,7 +172,7 @@ namespace pragma.sqlite
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(434, 372);
+            this.button5.Location = new System.Drawing.Point(430, 326);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 30);
             this.button5.TabIndex = 8;
@@ -182,7 +182,7 @@ namespace pragma.sqlite
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(14, 372);
+            this.button6.Location = new System.Drawing.Point(10, 326);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(75, 30);
             this.button6.TabIndex = 9;
@@ -194,7 +194,7 @@ namespace pragma.sqlite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 407);
+            this.ClientSize = new System.Drawing.Size(519, 363);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
