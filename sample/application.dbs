@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Sqlite" id="Project-11f" database="Sqlite" >
+	<schema name="Default" >
+		<table name="applications" spec="" >
+			<column name="application_id" type="TEXT" jt="-1" mandatory="y" />
+			<column name="application_name" type="TEXT" jt="-1" mandatory="y" />
+			<index name="pk_applications" unique="PRIMARY_KEY" >
+				<column name="application_id" />
+			</index>
+			<options><![CDATA[WITHOUT ROWID]]></options>
+		</table>
+		<table name="subscriptions" spec="" >
+			<column name="subscription_id" type="TEXT" jt="-1" mandatory="y" />
+			<column name="user_id" type="TEXT" jt="-1" mandatory="y" />
+			<column name="application_id" type="TEXT" jt="-1" mandatory="y" />
+			<index name="pk_subscriptions" unique="PRIMARY_KEY" >
+				<column name="subscription_id" />
+			</index>
+			<fk name="FK_subscriptions users" to_schema="Default" to_table="users" options="" >
+				<fk_column name="user_id" pk="user_id" />
+			</fk>
+			<fk name="FK_subscriptions applications" to_schema="Default" to_table="applications" options="" >
+				<fk_column name="application_id" pk="application_id" />
+			</fk>
+			<options><![CDATA[WITHOUT ROWID]]></options>
+		</table>
+		<table name="users" spec="" >
+			<column name="user_id" type="TEXT" jt="-1" mandatory="y" />
+			<column name="user_email" type="TEXT" jt="-1" mandatory="y" />
+			<column name="user_password" type="TEXT" jt="-1" mandatory="y" />
+			<index name="pk_users" unique="PRIMARY_KEY" >
+				<column name="user_id" />
+			</index>
+			<options><![CDATA[WITHOUT ROWID]]></options>
+		</table>
+	</schema>
+	<connector name="Sqlite" database="Sqlite" driver_class="org.sqlite.JDBC" driver_jar="sqlite-jdbc-3.36.0.3.jar" driver_desc="Standard" host="localhost" port="7210" instance="d:/Desktop/pragma.sqlite/sample/application.db" />
+	<layout name="Main Layout" id="Layout-44e" show_relation="columns" >
+		<entity schema="Default" name="applications" color="BED3F4" x="224" y="80" />
+		<entity schema="Default" name="subscriptions" color="BED3F4" x="128" y="256" />
+		<entity schema="Default" name="users" color="BED3F4" x="48" y="80" />
+		<group name="subscriptions" color="ECF0F7" >
+			<entity schema="Default" name="applications" />
+			<entity schema="Default" name="users" />
+			<entity schema="Default" name="subscriptions" />
+		</group>
+	</layout>
+	<layout name="~Layout with Sample Tools" id="Layout-1179" show_column_type="y" show_relation="columns" >
+		<entity schema="Default" name="applications" color="BED3F4" x="288" y="48" />
+		<entity schema="Default" name="subscriptions" color="BED3F4" x="48" y="48" />
+		<entity schema="Default" name="users" color="BED3F4" x="288" y="240" />
+		<script name="SQL Editor" id="Editor-1fbf" language="SQL" >
+			<string><![CDATA[SELECT subscription_id, user_id, application_id
+FROM
+	subscriptions s;]]></string>
+		</script>
+		<browser id="Browse-c37" name="Relational Data Explorer" confirm_updates="y" >
+			<browse_table schema="Default" entity="subscriptions" x="20" y="20" width="400" height="300" >
+				<browse_table schema="Default" entity="users" fk="FK_subscriptions users" x="440" y="20" width="500" height="350" record_view="y" />
+			</browse_table>
+		</browser>
+		<query id="Query-2b0" name="Query Builder" >
+			<query_table schema="Default" name="subscriptions" alias="s" x="48" y="48" >
+				<column name="subscription_id" />
+				<column name="user_id" />
+				<column name="application_id" />
+				<query_table schema="Default" name="users" alias="u" x="240" y="48" fk="FK_subscriptions users" type="Inner Join" >
+					<column name="user_id" />
+					<column name="user_email" />
+					<column name="user_password" />
+				</query_table>
+			</query_table>
+		</query>
+		<form name="Report" id="Report-1ee6" template="Page" css="container-fluid" view="frame" >
+			<var name="samplePageNumber" type="4" value="0" mandatory="n" />
+			<var name="sampleRecordsPerPage" type="4" value="100" mandatory="n" />
+			<body name="Body" template="Grid" pos="0,0,0,0,f,f" layout="{{-2,-2,-2,-2,-1},{-2,-2,-2,-2}}" scroll="n" html="n" >
+				<cell type="label" name="Subscriptions Data" template="H3" pos="0,0,1,0,l,c" />
+				<cell type="chart" name="Pie" template="Pie" pos="0,1,4,1,l,c" max_records="20" >
+					<form_script type="DataSource" language="SQL" >
+						<var name="subscription_id" type="-1" />
+						<var name="user_id" type="-1" />
+						<var name="application_id" type="-1" />
+						<script ><![CDATA[SELECT * FROM subscriptions]]></script>
+					</form_script>
+					<param name="i0" value="application_id" />
+					<param name="width" value="100%" />
+					<param name="title" value="Sample Chart" />
+					<param name="height" value="400px" />
+				</cell>
+				<tableview name="sample" template="Table" css="table table-striped table-sm table-hover" pos="0,2,4,2,f,f" layout="{{-2,-2,-2,-2},{-2,-2}}" scroll="n" html="n" header_rows="1" >
+					<form_script type="DataSource" language="SQL" >
+						<var name="subscription_id" type="-1" />
+						<var name="user_id" type="-1" />
+						<var name="application_id" type="-1" />
+						<script ><![CDATA[SELECT * FROM subscriptions]]></script>
+					</form_script>
+					<cell type="label" name="subscription_id" pos="0,0,0,0,c,c" />
+					<cell type="label" name="user_id" pos="1,0,1,0,c,c" />
+					<cell type="label" name="application_id" pos="2,0,2,0,c,c" />
+					<cell type="label" name="Button can open other pages." pos="3,0,3,0,c,c" />
+					<cell type="label" name="${subscription_id}" template="Plain" pos="0,1,0,1,l,c" />
+					<cell type="label" name="${user_id}" template="Plain" pos="1,1,1,1,l,c" />
+					<cell type="label" name="${application_id}" template="Plain" pos="2,1,2,1,l,c" />
+					<cell type="button" name="More" template="Plain" css="btn btn-default btn-success" pos="3,1,3,1,c,c" ref_id="Report-1ee6" />
+				</tableview>
+				<cell type="href" name="" disabled="${samplePageNumber&lt;1}" pos="0,3,0,3,l,c" glyph="FA-ANGLE_DOUBLE_LEFT" ref_id="Report-1ee6" >
+					<var name="samplePageNumber" value="0" />
+				</cell>
+				<cell type="href" name="" disabled="${samplePageNumber&lt;1}" pos="1,3,1,3,l,c" glyph="FA-ANGLE_LEFT" ref_id="Report-1ee6" >
+					<var name="samplePageNumber" value="${Math.max(0,samplePageNumber-1)}" />
+				</cell>
+				<cell type="label" name="Page ${samplePageNumber+1}" pos="2,3,2,3,l,c" />
+				<cell type="href" name="" disabled="${!sampleHasNextPage}" pos="3,3,3,3,l,c" glyph="FA-ANGLE_RIGHT" ref_id="Report-1ee6" >
+					<var name="samplePageNumber" value="${( samplePageNumber+1 )}" />
+				</cell>
+			</body>
+		</form>
+	</layout>
+</project>
