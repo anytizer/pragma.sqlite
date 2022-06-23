@@ -1,5 +1,7 @@
 # Sample Database
 
+Understanding sample database provided as: [application.db](https://github.com/anytizer/pragma.sqlite/raw/main/sample/application.db) (download).
+
 ## Schema
 ![application.png](application.png)
 
