@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "pragma.sqlite": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
