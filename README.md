@@ -2,10 +2,10 @@
 
 Table structure viewer for SQLite
 
-* Connects to the user-selected .db file.
+* Connects to the user-selected .db sqlite database file.
 * Looks up for list of tables.
-* Fetches table structures when you choose a table.
-* Basic hints on other SQL operations
+* Fetches table structures when you select a table.
+* Basic hints on other SQL operations.
 
 ## How to?
 
@@ -24,5 +24,10 @@ Table structure viewer for SQLite
 ![screenshot](resources/screenshot.png)
 
 It is a generic experimental product that shows:
-* Connecting to SQLite Database.
-* PRAGMA queries
+* Connecting to SQLite Database using C# under [dotnet](https://dotnet.microsoft.com/) 7.
+* PRAGMA queries.
+* CREATE info of a table.
+* Sample SQLs for insert, flag, delete kind of queries.
+
+## Samples
+See more information in [sample](sample/) for the attached database.
