@@ -5,14 +5,14 @@
 
 Diagram made with [DBSchema](https://dbschema.com/)
 
-## Sample as appears on [DB Browser for SQLite](https://sqlitebrowser.org/)
+## Full list of tables
 ![from-db-browser-for-sqlite.png](from-db-browser-for-sqlite.png)
 
-(Database made with this software).
+Database made with [DB Browser for SQLite](https://sqlitebrowser.org/)
 
 **Note:** DB Browser for SQLite is a high quality, visual, open source tool to create, design, and edit database files compatible with SQLite.
 
 ## pragma.sqlite
 ![subscriptions.png](subscriptions.png)
 
-Screenshot as appears with this software.
+Screenshot as appears with this software - displaying create view only.
