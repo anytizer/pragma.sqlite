@@ -29,14 +29,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <Optimize>False</Optimize>
     <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
-    <DebugType>full</DebugType>
+    <DebugType>none</DebugType>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <FileAlignment>1024</FileAlignment>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
-    <DebugType>full</DebugType>
+    <DebugType>none</DebugType>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <FileAlignment>1024</FileAlignment>
   </PropertyGroup>

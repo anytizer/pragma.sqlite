@@ -17,9 +17,10 @@ Table structure viewer for SQLite
 * Choose different tables to load the structure.
 
 ## Dependencies
-* [dotnet 7](https://dotnet.microsoft.com/en-us/download/dotnet)
-* [Microsoft.Data.Sqlite](https://www.nuget.org/packages/Microsoft.Data.Sqlite/)
-* [SQLitePCLRaw]()
+* [dotnet 7](https://dotnet.microsoft.com/en-us/download/dotnet) preview
+* [Microsoft.Data.Sqlite](https://www.nuget.org/packages/Microsoft.Data.Sqlite/) - MIT license
+* [Microsoft.Data.Sqlite.Core](https://www.nuget.org/packages/Microsoft.Data.Sqlite.Core) - MIT license
+* [SQLitePCLRaw.bundle_e_sqlite3](https://www.nuget.org/packages/SQLitePCLRaw.bundle_e_sqlite3) - Apache-2.0 license
 
 ![screenshot](resources/screenshot.png)
 
