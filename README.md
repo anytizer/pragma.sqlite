@@ -18,7 +18,7 @@ Table structure viewer for SQLite
 
 ## Dependencies
 * [dotnet 7](https://dotnet.microsoft.com/en-us/download/dotnet)
-* [Microsoft.Data.Sqlite]()
+* [Microsoft.Data.Sqlite](https://www.nuget.org/packages/Microsoft.Data.Sqlite/)
 * [SQLitePCLRaw]()
 
 ![screenshot](resources/screenshot.png)
