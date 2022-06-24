@@ -1,6 +1,6 @@
 # Sample Database
 
-Understanding sample database provided as: [application.db](https://github.com/anytizer/pragma.sqlite/raw/main/sample/application/application.db) (download).
+Understanding sample database provided as: [application/application.db](https://github.com/anytizer/pragma.sqlite/raw/main/sample/application/application.db) (download).
 
 More complex database: [icons/icons.db](https://github.com/anytizer/pragma.sqlite/raw/main/sample/icons/icons.db) (download).
 
