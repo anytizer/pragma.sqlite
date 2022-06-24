@@ -53,7 +53,7 @@ namespace pragma.sqlite
 
         internal string flag(string tablename)
         {
-            return string.Format("UPDATE `{0}` SET is_flagged=(is_flagged='Y', 'N', 'Y') WHERE id=:id;", tablename);
+            return string.Format("UPDATE `{0}` SET is_flagged=IF(is_flagged='Y', 'N', 'Y') WHERE id=:id;", tablename);
         }
 
         internal string delete(string tablename)
