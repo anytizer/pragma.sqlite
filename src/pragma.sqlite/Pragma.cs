@@ -15,8 +15,11 @@ namespace pragma.sqlite
         {
             List<ComboItemDTO> tables = new List<ComboItemDTO>();
 
-            string sql = "SELECT tbl_name FROM sqlite_master WHERE type=\"table\";";
-            List<string[]> tables1 = Query(sql);
+            List<KVDTO> parameters = new List<KVDTO>();
+            parameters.Add(new KVDTO() { k = "type", v = "table" });
+
+            string sql = "SELECT tbl_name FROM sqlite_master WHERE type=@type;";
+            List<string[]> tables1 = Query(sql, parameters);
             foreach (string[] table in tables1)
             {
                 tables.Add(new ComboItemDTO() { Name = table[0], Value = table[0] });
@@ -53,17 +56,17 @@ namespace pragma.sqlite
 
         internal string flag(string tablename)
         {
-            return string.Format("UPDATE `{0}` SET is_flagged=IF(is_flagged='Y', 'N', 'Y') WHERE id=:id;", tablename);
+            return string.Format("UPDATE `{0}` SET is_flagged=IF(is_flagged='Y', 'N', 'Y') WHERE pk_id=@pk_id;", tablename);
         }
 
         internal string delete(string tablename)
         {
-            return string.Format("UPDATE `{0}` SET is_approved='N' WHERE id=:id;", tablename);
+            return string.Format("UPDATE `{0}` SET is_approved='N' WHERE pk_id=@pk_id;", tablename);
         }
 
         internal string update(string tablename)
         {
-            return string.Format("UPDATE `{0}` SET `field`=@field WHERE id=:id;", tablename);
+            return string.Format("UPDATE `{0}` SET `field`=@field WHERE pk_id=@pk_id;", tablename);
         }
 
         internal string purge(string tablename)
