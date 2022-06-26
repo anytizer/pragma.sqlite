@@ -1,0 +1,6 @@
+INSERT INTO "main"."translations" (
+	"translation_id", "language_id", "phrase_id", "phrase_translation"
+)
+VALUES (
+	'1', '1', '1', 'नाम'
+);

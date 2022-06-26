@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Sqlite" id="Project-cfa" database="Sqlite" >
+	<schema name="Default" >
+		<table name="languages" spec="" >
+			<column name="language_id" type="TEXT" jt="-1" mandatory="y" />
+			<column name="language_name_latin" type="TEXT" jt="-1" mandatory="y" />
+			<column name="language_name_unicode" type="TEXT" jt="-1" mandatory="y" />
+			<column name="language_code" type="TEXT" jt="-1" mandatory="y" />
+			<column name="language_icon" type="TEXT" jt="-1" mandatory="y" />
+			<index name="pk_languages" unique="PRIMARY_KEY" >
+				<column name="language_id" />
+			</index>
+			<options><![CDATA[WITHOUT ROWID]]></options>
+		</table>
+		<table name="phrases" spec="" >
+			<column name="phrase_id" type="BLOB" jt="2004" mandatory="y" />
+			<column name="phrase_section" type="TEXT" jt="-1" mandatory="y" />
+			<column name="phrase_index" type="TEXT" jt="-1" mandatory="y" />
+			<column name="phrase_default_latin" type="TEXT" jt="-1" mandatory="y" />
+			<index name="pk_phrases" unique="PRIMARY_KEY" >
+				<column name="phrase_id" />
+			</index>
+			<options><![CDATA[WITHOUT ROWID]]></options>
+		</table>
+		<table name="translations" spec="" >
+			<column name="translation_id" type="TEXT" jt="-1" mandatory="y" />
+			<column name="language_id" type="TEXT" jt="-1" mandatory="y" />
+			<column name="phrase_id" type="TEXT" jt="-1" mandatory="y" />
+			<column name="phrase_translation" type="TEXT" jt="-1" mandatory="y" />
+			<index name="pk_translations" unique="PRIMARY_KEY" >
+				<column name="translation_id" />
+			</index>
+			<fk name="FK_translations phrases" to_schema="Default" to_table="phrases" delete_action="cascade" update_action="cascade" options="" >
+				<fk_column name="phrase_id" pk="phrase_id" />
+			</fk>
+			<fk name="FK_translations languages" to_schema="Default" to_table="languages" delete_action="cascade" update_action="cascade" options="" >
+				<fk_column name="language_id" pk="language_id" />
+			</fk>
+			<options><![CDATA[WITHOUT ROWID]]></options>
+		</table>
+	</schema>
+	<connector name="Sqlite" database="Sqlite" driver_class="org.sqlite.JDBC" driver_jar="sqlite-jdbc-3.36.0.3.jar" driver_desc="Standard" host="localhost" port="7210" instance="D:/Desktop/apps developed/toolkit.cs/database/multilingual.db" />
+	<layout name="Main Layout" id="Layout-1631" show_relation="columns" >
+		<entity schema="Default" name="languages" color="BED3F4" x="48" y="80" />
+		<entity schema="Default" name="phrases" color="BED3F4" x="320" y="80" />
+		<entity schema="Default" name="translations" color="BED3F4" x="192" y="352" />
+		<group name="languages" color="ECF0F7" >
+			<entity schema="Default" name="languages" />
+			<entity schema="Default" name="phrases" />
+			<entity schema="Default" name="translations" />
+		</group>
+	</layout>
+	<layout name="~Layout with Sample Tools" id="Layout-232d" show_column_type="y" show_relation="columns" >
+		<entity schema="Default" name="languages" color="BED3F4" x="48" y="48" />
+		<entity schema="Default" name="phrases" color="BED3F4" x="336" y="48" />
+		<entity schema="Default" name="translations" color="BED3F4" x="48" y="272" />
+		<script name="SQL Editor" id="Editor-46f" language="SQL" >
+			<string><![CDATA[SELECT language_id, language_name_latin, language_name_unicode, language_code, language_icon
+FROM
+	languages s;]]></string>
+		</script>
+		<browser id="Browse-b48" name="Relational Data Explorer" confirm_updates="y" >
+			<browse_table schema="Default" entity="languages" x="20" y="20" width="400" height="300" />
+		</browser>
+		<query id="Query-23b6" name="Query Builder" >
+			<query_table schema="Default" name="languages" alias="l" x="48" y="48" >
+				<column name="language_id" />
+				<column name="language_name_latin" />
+				<column name="language_name_unicode" />
+				<column name="language_code" />
+				<column name="language_icon" />
+			</query_table>
+		</query>
+		<form name="Report" id="Report-e65" template="Page" css="container-fluid" view="frame" >
+			<var name="samplePageNumber" type="4" value="0" mandatory="n" />
+			<var name="sampleRecordsPerPage" type="4" value="100" mandatory="n" />
+			<body name="Body" template="Grid" pos="0,0,0,0,f,f" layout="{{-2,-2,-2,-2,-1},{-2,-2,-2,-2}}" scroll="n" html="n" >
+				<cell type="label" name="Languages Data" template="H3" pos="0,0,1,0,l,c" />
+				<cell type="chart" name="Pie" template="Pie" pos="0,1,4,1,l,c" max_records="20" >
+					<form_script type="DataSource" language="SQL" >
+						<var name="language_id" type="-1" />
+						<var name="language_name_latin" type="-1" />
+						<var name="language_name_unicode" type="-1" />
+						<var name="language_code" type="-1" />
+						<var name="language_icon" type="-1" />
+						<script ><![CDATA[SELECT * FROM languages]]></script>
+					</form_script>
+					<param name="i0" value="language_icon" />
+					<param name="width" value="100%" />
+					<param name="title" value="Sample Chart" />
+					<param name="height" value="400px" />
+				</cell>
+				<tableview name="sample" template="Table" css="table table-striped table-sm table-hover" pos="0,2,4,2,f,f" layout="{{-2,-2,-2,-2,-2,-2},{-2,-2}}" scroll="n" html="n" header_rows="1" >
+					<form_script type="DataSource" language="SQL" >
+						<var name="language_id" type="-1" />
+						<var name="language_name_latin" type="-1" />
+						<var name="language_name_unicode" type="-1" />
+						<var name="language_code" type="-1" />
+						<var name="language_icon" type="-1" />
+						<script ><![CDATA[SELECT * FROM languages]]></script>
+					</form_script>
+					<cell type="label" name="language_id" pos="0,0,0,0,c,c" />
+					<cell type="label" name="language_name_latin" pos="1,0,1,0,c,c" />
+					<cell type="label" name="language_name_unicode" pos="2,0,2,0,c,c" />
+					<cell type="label" name="language_code" pos="3,0,3,0,c,c" />
+					<cell type="label" name="language_icon" pos="4,0,4,0,c,c" />
+					<cell type="label" name="Button can open other pages." pos="5,0,5,0,c,c" />
+					<cell type="label" name="${language_id}" template="Plain" pos="0,1,0,1,l,c" />
+					<cell type="label" name="${language_name_latin}" template="Plain" pos="1,1,1,1,l,c" />
+					<cell type="label" name="${language_name_unicode}" template="Plain" pos="2,1,2,1,l,c" />
+					<cell type="label" name="${language_code}" template="Plain" pos="3,1,3,1,l,c" />
+					<cell type="label" name="${language_icon}" template="Plain" pos="4,1,4,1,l,c" />
+					<cell type="button" name="More" template="Plain" css="btn btn-default btn-success" pos="5,1,5,1,c,c" ref_id="Report-e65" />
+				</tableview>
+				<cell type="href" name="" disabled="${samplePageNumber&lt;1}" pos="0,3,0,3,l,c" glyph="FA-ANGLE_DOUBLE_LEFT" ref_id="Report-e65" >
+					<var name="samplePageNumber" value="0" />
+				</cell>
+				<cell type="href" name="" disabled="${samplePageNumber&lt;1}" pos="1,3,1,3,l,c" glyph="FA-ANGLE_LEFT" ref_id="Report-e65" >
+					<var name="samplePageNumber" value="${Math.max(0,samplePageNumber-1)}" />
+				</cell>
+				<cell type="label" name="Page ${samplePageNumber+1}" pos="2,3,2,3,l,c" />
+				<cell type="href" name="" disabled="${!sampleHasNextPage}" pos="3,3,3,3,l,c" glyph="FA-ANGLE_RIGHT" ref_id="Report-e65" >
+					<var name="samplePageNumber" value="${( samplePageNumber+1 )}" />
+				</cell>
+			</body>
+		</form>
+	</layout>
+</project>
