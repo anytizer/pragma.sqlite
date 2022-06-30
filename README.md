@@ -17,6 +17,7 @@ Table structure viewer for SQLite
 * Choose different tables to load the structure.
 
 ## Dependencies
+
 * [dotnet 7](https://dotnet.microsoft.com/en-us/download/dotnet) preview
 * [Microsoft.Data.Sqlite](https://www.nuget.org/packages/Microsoft.Data.Sqlite/) - MIT license
 * [Microsoft.Data.Sqlite.Core](https://www.nuget.org/packages/Microsoft.Data.Sqlite.Core) - MIT license
@@ -31,4 +32,5 @@ It is a generic experimental product that shows:
 * Sample SQLs for insert, flag, delete kind of queries.
 
 ## Samples
-See more information in [sample](sample/) for the attached database.
+
+See more information in attached [sample](sample/) databases.

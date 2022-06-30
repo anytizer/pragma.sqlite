@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.Sqlite;
+using System;
 using System.Data;
 
 namespace pragma.sqlite
@@ -10,8 +11,6 @@ namespace pragma.sqlite
         public SQLiteDatabaseConnection()
         {
             connection = new SqliteConnection(); // IDE Silencer only
-
-            // this.ConnectTo("database.db");
         }
 
         public void ConnectTo(string datafile)
@@ -21,11 +20,18 @@ namespace pragma.sqlite
             csb.ForeignKeys = true;
             csb.Password = "";
 
-            connection = new SqliteConnection(csb.ConnectionString);
+            try
+            {
+                connection = new SqliteConnection(csb.ConnectionString);
 
-            InstallProvidersOnConnection(connection);
-
-            connection.Open();
+                InstallProvidersOnConnection(connection);
+                connection.Open();
+            }
+            catch (Exception ex)
+            {
+                // log ex
+                System.IO.File.WriteAllText("error.log", ex.Message);
+            }
         }
 
         public SqliteCommand Command()
